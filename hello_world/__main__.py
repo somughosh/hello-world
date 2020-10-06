@@ -1,11 +1,13 @@
-import click
-from .hello_world import hello
+import typer
+from . import hello_world
 
 
-@click.command()
-@click.option("--name", prompt="Your name", help="The person to greet.")
-def main(name=""):
-    hello(name)
+def main(name: str = "World"):
+    """
+    Say Hello with any name given
+    """
+    print(hello_world.hello(name))
 
 
-main()
+if __name__ == "__main__":
+    typer.run(main)
